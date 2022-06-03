@@ -1,4 +1,6 @@
 node_modules
 .vscode
-*.csv;*.xlsx;*.xls;
+*.csv
+downloads
 dist
+*.png

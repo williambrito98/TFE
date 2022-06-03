@@ -2,6 +2,8 @@ import axios from 'axios'
 import CONFIG from './config.json'
 import { resolve as res } from 'path'
 import { readFileSync } from 'fs'
+import { setTimeout } from 'timers/promises'
+
 export async function resolveCaptcha () {
   async function submitCaptcha () {
     return new Promise((resolve, reject) => {
@@ -32,6 +34,8 @@ export async function resolveCaptcha () {
     console.log('erro ao enviar imagem')
     return false
   }
+
+  await setTimeout(20000)
 
   const solutionCaptha = await getCaptchaSolution(Number(idSubmitImage)) as string
   if (!solutionCaptha.includes('OK|')) {

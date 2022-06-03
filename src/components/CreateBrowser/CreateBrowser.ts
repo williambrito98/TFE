@@ -1,3 +1,4 @@
+import { join } from 'path'
 import { Browser, launch, Page } from 'puppeteer-core'
 import CONFIG from './config/UserBrowserConfig.json'
 
@@ -25,7 +26,7 @@ export default class CreateBrowser {
   public async setLocalDownloadFiles (page : Page, localDownlod: string) {
     // @ts-ignore
     await page._client.send('Page.setDownloadBehavior', {
-      downloadPath: localDownlod,
+      downloadPath: join(process.cwd(), 'downloads'),
       behavior: 'allow'
     })
 
